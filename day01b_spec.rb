@@ -1,20 +1,24 @@
 require "rspec"
-require_relative "day01"
+require_relative "day01b"
 
 describe "day01" do
-  it "returns 3 for '1122'" do
-    expect(day01("1122")).to eq 3
+  it "returns 6 for '1212'" do
+    expect(day01("1212")).to eq 6
   end
 
-  it "returns 4 for '1111'" do
-    expect(day01("1111")).to eq 4
+  it "returns 0 for '1221'" do
+    expect(day01("1221")).to eq 0
   end
 
-  it "returns 0 for '1234'" do
-    expect(day01("1234")).to eq 0
+  it "returns 4 for '123425'" do
+    expect(day01("123425")).to eq 4
   end
 
-  it "returns 9 for '91212129'" do
-    expect(day01("91212129")).to eq 9
+  it "returns 12 for '123123'" do
+    expect(day01("123123")).to eq 12
+  end
+
+  it "returns 4 for '12131415'" do
+    expect(day01("12131415")).to eq 4
   end
 end
