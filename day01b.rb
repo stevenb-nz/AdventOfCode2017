@@ -9,5 +9,5 @@ def day01(input)
   return output
 end
 
-input = File.read("day01_input.txt")
-puts day01(input.chomp)
+input = File.read("day01_input.txt").chomp
+puts day01(input)
