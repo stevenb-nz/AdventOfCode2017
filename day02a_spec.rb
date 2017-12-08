@@ -6,5 +6,4 @@ describe "day02" do
     input = File.read("day02a_test1.txt")
     expect(day02(input)).to eq 18
   end
-
 end
