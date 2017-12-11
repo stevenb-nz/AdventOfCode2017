@@ -20,12 +20,7 @@ def day07(input)
 end
 
 def balance(node_name,array,diff)
-  node_line = []
-  array.each do |line|
-    if line[0] == node_name then
-      node_line = line
-    end
-  end
+  node_line = find_line(node_name,array)
   temp_array = []
   temp_array1 = []
   temp_array2 = []
@@ -48,12 +43,7 @@ def balance(node_name,array,diff)
 end
 
 def node_weight(node_name,array)
-  node_line = []
-  array.each do |line|
-    if line[0] == node_name then
-      node_line = line
-    end
-  end
+  node_line = find_line(node_name,array)
   weight = node_line[1]
   if node_line.count > 2 then
     node_line[2].each do |sub_node|
@@ -61,6 +51,16 @@ def node_weight(node_name,array)
     end
   end
   return weight
+end
+
+def find_line(node_name,array)
+  node_line = []
+  array.each do |line|
+    if line[0] == node_name then
+      node_line = line
+    end
+  end
+  return node_line
 end
 
 def make_node(line)
