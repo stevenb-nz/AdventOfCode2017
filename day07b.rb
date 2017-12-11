@@ -16,8 +16,51 @@ def day07(input)
     end
   end
   root_node = (lhs - rhs).to_a[0]
-  print node_weight(root_node,array)
-  puts
+  return balance(root_node,array,0)
+end
+
+def balance(node_name,array,diff)
+  node_line = []
+  array.each do |line|
+    if line[0] == node_name then
+      node_line = line
+    end
+  end
+  temp_array = []
+  temp_array1 = []
+  temp_array2 = []
+  node_line[2].each do |sub_node|
+    temp_array1.push node_weight(sub_node,array)
+    temp_array2.push sub_node
+  end
+  temp_array = temp_array1.sort
+  if temp_array[0] == temp_array[-1] then
+    return node_line[1] + diff
+  else
+    if temp_array[0] != temp_array[1] then
+      diff = temp_array[1]-temp_array[0]
+      return balance(temp_array2[temp_array1.index(temp_array[0])],array,diff)
+    else
+      diff = temp_array[-2]-temp_array[-1]
+      return balance(temp_array2[temp_array1.index(temp_array[-1])],array,diff)
+    end
+  end
+end
+
+def node_weight(node_name,array)
+  node_line = []
+  array.each do |line|
+    if line[0] == node_name then
+      node_line = line
+    end
+  end
+  weight = node_line[1]
+  if node_line.count > 2 then
+    node_line[2].each do |sub_node|
+      weight += node_weight(sub_node,array)
+    end
+  end
+  return weight
 end
 
 def make_node(line)
@@ -31,28 +74,6 @@ def make_node(line)
     new_node.push line_array[3..-1].to_a
   end
   return new_node
-end
-
-def node_weight(node_name,array)
-  node_line = []
-  array.each do |line|
-    if line[0] == node_name then
-      node_line = line
-    end
-  end
-  weight = node_line[1]
-  if node_line.count > 2 then
-    puts node_line[1]
-    temp_array = []
-    node_line[2].each do |sub_node|
-      temp_weight = node_weight(sub_node,array)
-      temp_array.push temp_weight
-      weight += temp_weight
-    end
-    print temp_array
-  end
-  puts weight
-  return weight
 end
 
 input = File.read("day07_input.txt").chomp
