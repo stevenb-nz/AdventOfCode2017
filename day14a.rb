@@ -1,7 +1,7 @@
 def day14(input)
   squares = 0
   (0..127).each do |n|
-    squares += knot_hash(input+'-'+n.to_s).hex.to_s(2).count("1")
+    squares += knot_hash(input+'-'+n.to_s).hex.to_s(2).rjust(128,'0').count("1")
   end
   return squares
 end
