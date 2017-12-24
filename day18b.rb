@@ -10,6 +10,8 @@ def day18(input)
 end
 
 class Prog
+  attr_reader :sent_queue, :sent_count, :status
+
   def initialize(id,lines,p)
     @id = id
     @lines = lines
@@ -21,15 +23,7 @@ class Prog
     @sent_count = 0
     @status = 'running'
   end
-  def sent_queue
-    @sent_queue
-  end
-  def sent_count
-    @sent_count
-  end
-  def status
-    @status
-  end
+
   def exec
     this_line = @lines[@next_line].split(' ')
     val1 = get_val(this_line[1])
@@ -71,6 +65,7 @@ class Prog
       end
     end
   end
+
   def get_val(s)
     if ('a'..'z').include?(s) then
       if !@registers.has_key?(s) then
