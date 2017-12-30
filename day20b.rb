@@ -1,6 +1,6 @@
 def day20(input)
 lines = input.split("\n")
-values = []
+particles = []
 lines.each do |line|
   line.delete!("p")
   line.delete!("v")
@@ -8,10 +8,15 @@ lines.each do |line|
   line.delete!("=")
   line.delete!("<")
   line.delete!(">")
-  value = line.split(',').map(&:to_i)
-  values.push value[6].abs+value[7].abs+value[8].abs
+  particle = line.split(',').map(&:to_i)
+  particles.push particle
 end
-return values.index(values.min)
+100.times do
+  particles.each do |particle|
+    puts particle[0].abs + particle[1].abs + particle[2].abs
+  end
+end
+return
 end
 
 # input = File.read("day20_input.txt").chomp
