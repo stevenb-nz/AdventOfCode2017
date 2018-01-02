@@ -11,11 +11,9 @@ lines.each do |line|
   particle = line.split(',').map(&:to_i)
   particles.push particle
 end
-100.times do
   particles.each do |particle|
-    puts particle[0].abs + particle[1].abs + particle[2].abs
+
   end
-end
 return
 end
 
